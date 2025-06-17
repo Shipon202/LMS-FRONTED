@@ -18,7 +18,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "https://lms-6-gz0f.onrender.com/api/token/",
+        "http://127.0.0.1:8000/api/user/api/user/login/",
         {
           method: "POST",
           headers: {
@@ -28,21 +28,19 @@ function Login() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Invalid credentials");
-      }
-
       const data = await response.json();
+
+      if (!response.ok) {
+        console.error("Login failed:", data);
+        throw new Error(data.detail || "Login failed");
+      }
 
       localStorage.setItem("access", data.access);
       localStorage.setItem("refresh", data.refresh);
-
-      console.log("Login successful");
       navigate("/profile");
-      // window.location.href = "/dashboard"; // Optional redirect
     } catch (err) {
       console.error(err);
-      setError("Invalid username or password.");
+      setError("Invalid username or password");
     } finally {
       setLoading(false);
     }
@@ -81,6 +79,18 @@ function Login() {
               required
             />
           </div>
+          {/* 
+          <div className="relative">
+            <select
+              name="role"
+              className="w-full pl-3 pr-3 border border-teal-300 rounded-lg text-lg py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </div> */}
 
           <button
             type="submit"

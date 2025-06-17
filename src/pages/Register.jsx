@@ -18,29 +18,19 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await fetch(
-        "https://lms-6-gz0f.onrender.com/api/user/auth/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: form.username,
-            email: form.email,
-            password: form.password,
-            mobile_no: form.mobile_no,
-            role: "student",
-          }),
-        }
-      );
-
-      // if (!res.ok) {
-      //   // Handle error response
-      //   const errorData = await res.json();
-      //   console.error("Error:", errorData);
-      //   return;
-      // }
+      const res = await fetch("http://127.0.0.1:8000/api/user/auth/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: form.username,
+          email: form.email,
+          password: form.password,
+          mobile_no: form.mobile_no,
+          role: "student",
+        }),
+      });
 
       const data = await res.json();
       if (res.ok) {

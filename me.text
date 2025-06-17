@@ -16,3 +16,9 @@ mobile_no: "77665544"
 role: "student"
 username:rasel"
 pass - 12345
+
+{id: 4, username: 'messi', email: 'messi@gmai.com', role: 'student', mobile_no: '1122334455'
+pass : 123456789}
+{id: 5, username: 'rasel', email: 'rasel@gmail.com', role: 'student', mobile_no: '12345677'}
+
+{id: 6, username: 'khan', email: 'khan@gmail.com', role: 'student', mobile_no: '99887766'}
